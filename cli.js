@@ -1,4 +1,3 @@
-
 #!/usr/bin/env node
 
 const fs = require("fs");
@@ -22,9 +21,8 @@ if (fs.existsSync(projectPath)) {
 fs.mkdirSync(projectPath);
 console.log(`📁 Creando proyecto en: ${projectPath}`);
 
-// Copiar archivos desde la plantilla actual
 const templatePath = __dirname;
-const filesToCopy = fs.readdirSync(templatePath).filter(f => !["cli.js", ".git", "node_modules"].includes(f));
+const filesToCopy = fs.readdirSync(templatePath).filter(f => !["cli.js", "cli-commonjs.js", ".git", "node_modules"].includes(f));
 
 filesToCopy.forEach(file => {
   const src = path.join(templatePath, file);
@@ -37,7 +35,6 @@ filesToCopy.forEach(file => {
   }
 });
 
-// Personalizar package.json
 const packageJsonPath = path.join(projectPath, "package.json");
 if (fs.existsSync(packageJsonPath)) {
   const pkg = JSON.parse(fs.readFileSync(packageJsonPath, "utf-8"));
@@ -48,8 +45,5 @@ if (fs.existsSync(packageJsonPath)) {
 console.log("📦 Instalando dependencias...");
 execSync("npm install", { cwd: projectPath, stdio: "inherit" });
 
-console.log(`
-🚗 Proyecto OpenCars creado con éxito 🎉`);
-console.log(`👉 Ejecutá:
-  cd ${projectName}
-  npm run dev`);
+console.log(`\n🚗 Proyecto OpenCars creado con éxito 🎉`);
+console.log(`👉 Ejecutá:\n  cd ${projectName}\n  npm run dev`);
