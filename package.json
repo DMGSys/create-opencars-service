@@ -5,7 +5,7 @@
   "bin": {
     "create-opencars-service": "./cli.js"
   },
-  "type": "module",
+ 
   "keywords": ["express", "mongodb", "template", "opencars", "generator"],
   "author": "DMGSys",
   "license": "MIT"
